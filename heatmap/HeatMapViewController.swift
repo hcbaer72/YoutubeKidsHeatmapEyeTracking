@@ -13,10 +13,17 @@ class HeatMapViewController: UIViewController, ARSCNViewDelegate {
 
     @IBOutlet var sceneView: ARSCNView! = ARSCNView()
     
-    let phoneWidth = 375 * 3;
-    let phoneHeight = 812 * 3;
+    let phoneWidth = 834 * 3;
+    let phoneHeight = 1194 * 3;
     
-    var m_data : [UInt8] = [UInt8](repeating: 0, count: 375*3 * 812*3)
+    // dimesions for iPad Pro 11 inch ^
+    
+    //let phoneWidth = 375 * 3; (iPhone X width)
+    //let phoneHeight = 812 * 3; (iPhone X height)
+    
+    var m_data : [UInt8] = [UInt8](repeating: 0, count: 834 * 3 * 1194 * 3)
+    
+    //var m_data : [UInt8] = [UInt8](repeating: 0, count: 375*3 * 812*3) (iPhone X)
     
     var positions: Array<simd_float2> = Array()
     let numPositions = 10;
@@ -184,8 +191,11 @@ class HeatMapViewController: UIViewController, ARSCNViewDelegate {
     }
     
     func screenPositionFromHittest(_ result1: SCNHitTestResult, secondResult result2: SCNHitTestResult) -> simd_float2 {
-        let iPhoneXPointSize = simd_float2(375, 812)  // size of iPhoneX in points
-        let iPhoneXMeterSize = simd_float2(0.0623908297, 0.135096943231532)
+        let iPhoneXPointSize = simd_float2(834, 1194)  // size of iPad Pro 11 inch in points
+        let iPhoneXMeterSize = simd_float2(0.178308, 0.247396) // size of iPad Pro 11 inch in meters
+        
+      //  let iPhoneXPointSize = simd_float2(375, 812)  // size of iPhoneX in points
+      //  let iPhoneXMeterSize = simd_float2(0.0623908297, 0.135096943231532)
 
         let xLC = ((result1.localCoordinates.x + result2.localCoordinates.x) / 2.0)
         var x = xLC / (iPhoneXMeterSize.x / 2.0) * iPhoneXPointSize.x
