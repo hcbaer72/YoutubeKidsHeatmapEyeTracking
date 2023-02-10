@@ -11,19 +11,12 @@ import ARKit
 
 class HeatMapViewController: UIViewController, ARSCNViewDelegate {
 
-    @IBOutlet var sceneView: ARSCNView! = ARSCNView()
+    var sceneView: ARSCNView! 
     
-    let phoneWidth = 834 * 3;
-    let phoneHeight = 1194 * 3;
+    let phoneWidth = 375 * 3;
+    let phoneHeight = 812 * 3;
     
-    // dimesions for iPad Pro 11 inch ^
-    
-    //let phoneWidth = 375 * 3; (iPhone X width)
-    //let phoneHeight = 812 * 3; (iPhone X height)
-    
-    var m_data : [UInt8] = [UInt8](repeating: 0, count: 834 * 3 * 1194 * 3)
-    
-    //var m_data : [UInt8] = [UInt8](repeating: 0, count: 375*3 * 812*3) (iPhone X)
+    var m_data : [UInt8] = [UInt8](repeating: 0, count: 375*3 * 812*3)
     
     var positions: Array<simd_float2> = Array()
     let numPositions = 10;
@@ -70,15 +63,16 @@ class HeatMapViewController: UIViewController, ARSCNViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .green
         
-       // target.backgroundColor = UIColor.red
-       // target.frame = CGRect.init(x: 0,y:0 ,width:25 ,height:25)
-       // target.layer.cornerRadius = 12.5
-       // sceneView.addSubview(target)
+        target.backgroundColor = UIColor.red
+        target.frame = CGRect.init(x: 0,y:0 ,width:25 ,height:25)
+        target.layer.cornerRadius = 12.5
+        sceneView.addSubview(target)
         
         // Set the view's delegate
         sceneView.delegate = self
-        //sceneView.session.delegate = self
+       // sceneView.session.delegate = self
         sceneView.automaticallyUpdatesLighting = true
         
         // Show statistics such as fps and timing information
@@ -124,17 +118,18 @@ class HeatMapViewController: UIViewController, ARSCNViewDelegate {
     // Override to create and configure nodes for anchors added to the view's session.
     func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
         let node = SCNNode()
-     
+     print("returning scene node")
         return node
     }
     
     func session(_ session: ARSession, didFailWithError error: Error) {
         // Present an error message to the user
+        print(error.localizedDescription)
     }
     
     func sessionWasInterrupted(_ session: ARSession) {
         // Inform the user that the session has been interrupted, for example, by presenting an overlay
-        
+        print("session interrupted")
     }
     
     func sessionInterruptionEnded(_ session: ARSession) {
@@ -147,9 +142,11 @@ class HeatMapViewController: UIViewController, ARSCNViewDelegate {
         eyeRaycastData?.transform = node.transform;
         eyeLasers?.update(withFaceAnchor: faceAnchor)
         eyeRaycastData?.update(withFaceAnchor: faceAnchor)
+        print("render did update")
     }
     
     func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
+        print("render at time")
         virtualPhoneNode.transform = (sceneView.pointOfView?.transform)!
         
         let options : [String: Any] = [SCNHitTestOption.backFaceCulling.rawValue: false,
@@ -177,7 +174,7 @@ class HeatMapViewController: UIViewController, ARSCNViewDelegate {
         if (hitTestLeftEye.count > 0 && hitTestRightEye.count > 0) {
             
             var coords = screenPositionFromHittest(hitTestLeftEye[0], secondResult:hitTestRightEye[0])
-            //print("x:\(coords.x) y: \(coords.y)")
+            print("x:\(coords.x) y: \(coords.y)")
             
             incrementHeatMapAtPosition(x:Int(coords.x * 3), y:Int(coords.y * 3))  // convert from points to pixels here
             
@@ -191,11 +188,8 @@ class HeatMapViewController: UIViewController, ARSCNViewDelegate {
     }
     
     func screenPositionFromHittest(_ result1: SCNHitTestResult, secondResult result2: SCNHitTestResult) -> simd_float2 {
-        let iPhoneXPointSize = simd_float2(834, 1194)  // size of iPad Pro 11 inch in points
-        let iPhoneXMeterSize = simd_float2(0.178308, 0.247396) // size of iPad Pro 11 inch in meters
-        
-      //  let iPhoneXPointSize = simd_float2(375, 812)  // size of iPhoneX in points
-      //  let iPhoneXMeterSize = simd_float2(0.0623908297, 0.135096943231532)
+        let iPhoneXPointSize = simd_float2(375, 812)  // size of iPhoneX in points
+        let iPhoneXMeterSize = simd_float2(0.0623908297, 0.135096943231532)
 
         let xLC = ((result1.localCoordinates.x + result2.localCoordinates.x) / 2.0)
         var x = xLC / (iPhoneXMeterSize.x / 2.0) * iPhoneXPointSize.x

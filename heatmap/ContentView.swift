@@ -7,6 +7,7 @@
 import SwiftUI
 import ReplayKit
 import Photos
+import ARKit
 
 
 struct ContentView: View {
@@ -18,11 +19,13 @@ struct ContentView: View {
     @State private var stopRecord = false
     
     
+   
     
     // For WebView's forward and backward navigation
     var webViewNavigationBar: some View {
+        
         VStack(spacing: 0) {
-            
+            HeatMapView()
             Divider()
             HStack {
                 Spacer()
@@ -167,6 +170,7 @@ struct ContentView: View {
                                     
 //                                    //start eye tracking
 //                                    eyeTracking.startSession()
+                                   
                                     
 //
 //                                    //show eye tracking pointer
@@ -194,13 +198,14 @@ struct ContentView: View {
                 //     Loader()
                 // }
             }
-            HeatMapView()
+            
         }
     }
     
     struct ContentView_Previews: PreviewProvider {
         static var previews: some View {
             ContentView()
+            
         }
     }
 }

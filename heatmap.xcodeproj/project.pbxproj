@@ -36,6 +36,7 @@
 		2708C7FB298E162A00CFA083 /* webview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = webview.swift; sourceTree = "<group>"; };
 		2708C7FD298E164500CFA083 /* viewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = viewModel.swift; sourceTree = "<group>"; };
 		2708C7FF298E171300CFA083 /* heatmapview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = heatmapview.swift; sourceTree = "<group>"; };
+		27098147298F004200046AB7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,11 +69,11 @@
 		2708C7E1298E145C00CFA083 /* heatmap */ = {
 			isa = PBXGroup;
 			children = (
+				27098147298F004200046AB7 /* Info.plist */,
 				2708C7E2298E145C00CFA083 /* heatmapApp.swift */,
 				2708C7E4298E145C00CFA083 /* ContentView.swift */,
 				2708C7E6298E146000CFA083 /* Assets.xcassets */,
 				2708C7E8298E146000CFA083 /* heatmap.entitlements */,
-				2708C7E9298E146000CFA083 /* Preview Content */,
 				2708C7F1298E149B00CFA083 /* HeatMap.metal */,
 				2708C7F3298E152D00CFA083 /* RaycastData.swift */,
 				2708C7F5298E155C00CFA083 /* EyeLasers.swift */,
@@ -81,6 +82,7 @@
 				2708C7F9298E160E00CFA083 /* extensions.swift */,
 				2708C7FB298E162A00CFA083 /* webview.swift */,
 				2708C7FD298E164500CFA083 /* viewModel.swift */,
+				2708C7E9298E146000CFA083 /* Preview Content */,
 			);
 			path = heatmap;
 			sourceTree = "<group>";
@@ -301,9 +303,10 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSCameraUsageDescription = "$(PRODUCT_BUNDLE_PACKAGE_TYPE)";
-				INFOPLIST_KEY_NSFaceIDUsageDescription = "$(CURRENT_PROJECT_VERSION)";
-				INFOPLIST_KEY_NSMicrophoneUsageDescription = "";
+				INFOPLIST_FILE = heatmap/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = heatmap;
+				INFOPLIST_KEY_NSFaceIDUsageDescription = heatmap;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = heatmap;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -319,7 +322,7 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 13.1;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = holly.lasers.heatmap;
+				PRODUCT_BUNDLE_IDENTIFIER = holly.lasers.heatmapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
@@ -342,9 +345,10 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSCameraUsageDescription = "$(PRODUCT_BUNDLE_PACKAGE_TYPE)";
-				INFOPLIST_KEY_NSFaceIDUsageDescription = "$(CURRENT_PROJECT_VERSION)";
-				INFOPLIST_KEY_NSMicrophoneUsageDescription = "";
+				INFOPLIST_FILE = heatmap/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = heatmap;
+				INFOPLIST_KEY_NSFaceIDUsageDescription = heatmap;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = heatmap;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -360,7 +364,7 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 13.1;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = holly.lasers.heatmap;
+				PRODUCT_BUNDLE_IDENTIFIER = holly.lasers.heatmapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";

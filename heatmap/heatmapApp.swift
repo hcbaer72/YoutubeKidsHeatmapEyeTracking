@@ -11,7 +11,9 @@ import SwiftUI
 struct heatmapApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            //ContentView()
+            HeatMapView()
+                .frame(width: 800, height: 1024)
         }
     }
 }
